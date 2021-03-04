@@ -8,15 +8,13 @@ def render_main():
 
 @app.route("/response")
 def render_response():
-    color = request.args['color'] 
-    #The request object stores information about the request sent to the server.
-    #args is an ImmutableMultiDict (like a dictionary but can have mutliple values for the same key and can't be changed)
-    #The information in args is visible in the url for the page being requested. ex. .../response?color=blue
-    if color == 'pink':
-        reply = "That's my favorite color, too!"
+    text_input = request.args['text_input'] 
+    vowel = ["a", "e", "i", "o", "u"]
+    if text_input[0].lower() in vowel:
+        reply = text_input + "yay"
     else:
-        reply = "My favorite color is pink."
-    return render_template('response.html', response = reply)
+        reply = text_input[1:len(text_input)] + text_input[0:1] + "ay"
+    return render_template('reply.html', response = reply)
     
 if __name__=="__main__":
     app.run(debug=False, port=54321)
