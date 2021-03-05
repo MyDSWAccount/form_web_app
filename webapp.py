@@ -4,7 +4,15 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 
 @app.route("/")
 def render_main():
-    return render_template('page1.html')
+    return render_template('home.html')
+
+@app.route("/p1")
+def render_first():
+    return render_template('pigLatin.html')
+
+@app.route("/p2")
+def render_second():
+    return render_template('page2.html')
 
 @app.route("/response")
 def render_response():
