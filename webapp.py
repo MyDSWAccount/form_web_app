@@ -16,12 +16,27 @@ def render_second():
 
 @app.route("/response")
 def render_response():
-    text_input = request.args['text_input'] 
+    text_input = request.args['text_input']
+    c = 0
+    y = ""
+    txt = []
+    for x in text_input:
+        y = y + x
+        c = c + 1
+        if x == " ":
+            y = y[0:len(y)-1]
+            txt.append(y)
+            y = ""
+        elif c == len(text_input):
+            txt.append(y)
+            y = ""
     vowel = ["a", "e", "i", "o", "u"]
-    if text_input[0].lower() in vowel:
-        reply = text_input + "yay"
-    else:
-        reply = text_input[1:len(text_input)] + text_input[0:1] + "ay"
+    reply = ""
+    for word in txt:
+        if word[0].lower() in vowel:
+            reply = reply + word + "yay" + " "
+        else:
+            reply = reply + word[1:len(word)] + word[0:1] + "ay" + " "
     return render_template('reply.html', response = reply)
     
 if __name__=="__main__":
