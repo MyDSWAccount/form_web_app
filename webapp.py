@@ -10,10 +10,6 @@ def render_main():
 def render_first():
     return render_template('pigLatin.html')
 
-@app.route("/p2")
-def render_second():
-    return render_template('page2.html')
-
 @app.route("/response")
 def render_response():
     text_input = request.args['text_input']
