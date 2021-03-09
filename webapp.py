@@ -17,6 +17,13 @@ def render_second():
 @app.route("/response")
 def render_response():
     text_input = request.args['text_input']
+    name_input = ""
+    userId = ""
+    name_input = request.args['name_input']
+    if name_input != "":
+        userId = name_input + "'s"
+    else:
+        userId = "Your"
     c = 0
     y = ""
     txt = []
@@ -37,7 +44,7 @@ def render_response():
             reply = reply + word + "yay" + " "
         else:
             reply = reply + word[1:len(word)] + word[0:1] + "ay" + " "
-    return render_template('reply.html', response = reply)
+    return render_template('reply.html', response = reply, name = userId)
     
 if __name__=="__main__":
     app.run(debug=False, port=54321)
