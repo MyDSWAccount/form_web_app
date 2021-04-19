@@ -42,7 +42,8 @@ def render_response():
             else:
                 reply = reply + word[1:len(word)] + word[0:1] + "ay" + " "
         return render_template('reply.html', response = reply, name = userId)
-    return render_template('PigLatin.html')
+    else:
+        return render_template('PigLatin.html')
     
 if __name__=="__main__":
     app.run(debug=False, port=54321)
